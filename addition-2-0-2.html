@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Addition 1 0-2</title>
+
+        <link href="../sheet.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <br><br><h1 id="MainTitle">Addition 2</h1>
+
+        <br><h2 id="OpgvNum">Opgave 1</h2>
+        <br><div id="Opgv">
+            <h3 id="OpgvTitle">Hvad er 6 + 15?</h3><br>
+            <input type="number" id="Opgv1" class="OpgvInput"><img id="OpgvStat1" class="OpgvStat" style="visibility: hidden">
+            <div style="width: 100%; height: 10px"></div>
+        </div>
+
+        <br><h2 id="OpgvNum">Opgave 2</h2>
+        <br><div id="Opgv">
+            <h3 id="OpgvTitle">Hvad er 22 + 16?</h3><br>
+            <input type="number" id="Opgv2" class="OpgvInput"><img id="OpgvStat2" class="OpgvStat" style="visibility: hidden">
+            <div style="width: 100%; height: 10px"></div>
+        </div>
+
+        <p id="Amount" class="PopSmall">0% Correct!</p>
+
+        <button id="RetSvarButton" onclick="Ret();">Ret svar</button>
+        <div style="width: 100%; height: 30px"></div>
+
+        <script>
+            var correct = 0;
+
+            function Ret() {
+                Eval("21", "1")
+                Eval("38", "2")
+
+                document.getElementById("Amount").innerHTML = Math.round((correct / 10) * 100) + "% Correct!";
+                document.getElementById("Amount").classList.remove("PopSmall");
+                document.getElementById("Amount").classList.add("AmountPopAnim");
+
+                setTimeout(function() {
+                        document.getElementById("Amount").classList.remove("AmountPopAnim");
+                        document.getElementById("Amount").style.transform = "scale(2)";
+                }, 1000)
+
+                document.getElementById("RetSvarButton").innerHTML = 'Tilbage til start';
+                document.getElementById("RetSvarButton").setAttribute("onclick", 'window.location.href = "../index.html"');
+            }
+
+            function Eval(Correct, IdNum) {
+                document.getElementById("OpgvStat" + IdNum).style.visibility = "visible";
+                document.getElementById("Opgv" + IdNum).setAttribute("readonly", "");
+
+                if (document.getElementById("Opgv" + IdNum).value == Correct)
+                {
+                    document.getElementById("OpgvStat" + IdNum).src = "../icons/checkmark.webp";
+                    document.getElementById("OpgvStat" + IdNum).classList.add("StatPopCorrect");
+                    document.getElementById("OpgvStat" + IdNum).classList.add("StatPopCorrectAnim");
+
+                    correct++;
+
+                    setTimeout(function() {
+                        document.getElementById("OpgvStat" + IdNum).classList.remove("StatPopCorrectAnim");
+                    }, 1000)
+                }
+                else
+                {
+                    document.getElementById("OpgvStat" + IdNum).src = "../icons/x.png";
+                    document.getElementById("OpgvStat" + IdNum).classList.add("StatPopWrong");
+                    document.getElementById("OpgvStat" + IdNum).classList.add("StatPopWrongAnim");
+
+                    setTimeout(function() {
+                        document.getElementById("OpgvStat" + IdNum).classList.remove("StatPopWrongAnim");
+                    }, 1000)
+                }
+            }
+        </script>
+    </body>
+</html>
