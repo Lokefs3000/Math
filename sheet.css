@@ -1,0 +1,125 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(129, 157, 223);
+    font-family: 'Mulish', sans-serif;
+    overflow-x: hidden;
+}
+
+#MainTitle {
+    width: 100%;
+    transform: scale(4);
+    text-align: center;
+}
+
+#Opgv {
+    top: -55px;
+    width: 80%;
+    position: relative;
+    left: 10%;
+    background-color: white;
+    border-radius: 8px;
+}
+
+#OpgvTitle {
+    width: 100%;
+    text-align: center;
+    transform: scale(1.6);
+    position: relative;
+    top: 10px;
+}
+
+#OpgvNum {
+    position: relative;
+    left: 10%;
+}
+
+.OpgvInput {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    background-color: lightgray;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    text-align: center;
+}
+
+#RetSvarButton {
+    width: 40%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%) scale(2);
+    border: none;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#RetSvarButton:hover {
+    background-color: lightgray;
+}
+
+.OpgvStat {
+    height: 18px;
+    position: relative;
+    top: 5px;
+    left: 36%;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.StatPopCorrect {
+    transform: scale(1) rotate(0deg);
+    filter: brightness(0.9) invert(.7) sepia(.5) hue-rotate(100deg) saturate(200%);
+    animation-name: statPopAnimCorrect;
+    animation-duration: 1s;
+}
+
+.StatPopWrong {
+    transform: scale(1) rotate(0deg);
+    filter: brightness(0.9) invert(.7) sepia(.5) hue-rotate(-50deg) saturate(200%);
+}
+
+.StatPopWrongAnim {
+    animation-name: statPopAnimWrong;
+    animation-duration: 1s;
+}
+
+.StatPopCorrectAnim {
+    animation-name: statPopAnimCorrect;
+    animation-duration: 1s;
+}
+
+@keyframes statPopAnimCorrect {
+    0% { transform: scale(0) rotate(20deg); filter: none; }
+    50% { transform: scale(1.5) rotate(-20deg); filter: brightness(0.9) invert(.7) sepia(.5) hue-rotate(100deg) saturate(200%); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes statPopAnimWrong {
+    0% { transform: scale(0) rotate(20deg); filter: none; }
+    50% { transform: scale(1.5) rotate(-20deg); filter: brightness(0.9) invert(.7) sepia(.5) hue-rotate(-50deg) saturate(200%); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+#Amount {
+    width: 100%;
+    text-align: center;
+}
+
+.AmountPopAnim {
+    animation-name: AmountPopAnim;
+    animation-duration: 1s;
+}
+
+.PopSmall {
+    transform: scale(0);
+}
+
+@keyframes AmountPopAnim {
+    0% { transform: scale(0) }
+    50% { transform: scale(2.5) }
+    100% { transform: scale(2) }
+}
